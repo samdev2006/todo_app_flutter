@@ -21,3 +21,12 @@ class singnUpUseCase {
 
   
 }
+
+class signOutUseCase {
+  final Authrepository repository;
+  signOutUseCase(this.repository);
+
+  Future<void> call() {
+    return repository.signOut();
+  }
+}
