@@ -1,30 +1,31 @@
 import 'package:todoapp/features/auth/domain/authRepository.dart';
 import 'package:todoapp/features/auth/domain/userEntity.dart';
 
-class SingnInUseCase {
+
+//Chaque UseCase défini une fonctionnalité de l'appplication
+class SignInUseCase {
   final Authrepository repository;
-  SingnInUseCase(this.repository);
+  SignInUseCase(this.repository);
 
   Future<Userentity> call(String email, String password){
     return repository.signIn(email, password);
   }
-  
 }
 
-class singnUpUseCase {
+
+class SignUpUseCase {
   final Authrepository repository;
-  singnUpUseCase(this.repository);
+  SignUpUseCase(this.repository);
 
   Future<Userentity> call(String email, String password){
-    return repository.singnUp(email, password);
-  }
-
-  
+    return repository.signUp(email, password);
+  }  
 }
 
-class signOutUseCase {
+
+class SignOutUseCase {
   final Authrepository repository;
-  signOutUseCase(this.repository);
+  SignOutUseCase(this.repository);
 
   Future<void> call() {
     return repository.signOut();
