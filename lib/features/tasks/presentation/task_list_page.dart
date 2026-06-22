@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../auth/presentation/bloc/auth_bloc.dart';
 import 'package:todoapp/features/tasks/presentation/task_list_page.dart';
 import 'package:todoapp/features/tasks/presentation/tasks_bloc.dart';
 import 'package:todoapp/features/tasks/presentation/tasks_state.dart';
@@ -21,7 +22,7 @@ class TaskListPage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
-              // TODO: ajouter SignOutRequested via AuthBloc
+              context.read<AuthBloc>().add(SignOutRequested());
             },
           ),
         ],
@@ -47,8 +48,8 @@ class TaskListPage extends StatelessWidget {
                     value: task.isDone,
                     onChanged: (_) {
                       context.read<TaskBloc>().add(UpdateTask(
-                        task.copyWith(isDone: !task.isDone),
-                      ));
+                            task.copyWith(isDone: !task.isDone),
+                          ));
                     },
                   ),
                   title: Text(
