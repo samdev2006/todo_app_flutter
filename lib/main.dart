@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:todoapp/features/auth/data/authRemoteDatasource.dart';
 import 'package:todoapp/features/auth/data/authRepositoryImpl.dart';
 import 'package:todoapp/features/auth/domain/authUsecases.dart';
+import 'package:todoapp/features/auth/presentation/loginPage.dart';
 import 'firebase_options.dart';
 import 'package:todoapp/features/auth/presentation/bloc/auth_bloc.dart';
 
@@ -40,17 +41,17 @@ class MyApp extends StatelessWidget {
     required this.signOutUseCase,
   });
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: BlocProvider(
-        create: (_) => AuthBloc(
-          signInUseCase: signInUseCase,
-          signUpUseCase: signUpUseCase,
-          signOutUseCase: signOutUseCase,
-        ),
-        child: const LoginPage(),
-      ),
-    );
-  }
+@override
+Widget build(BuildContext context) {
+  return BlocProvider(
+    create: (_) => AuthBloc(
+      signInUseCase: signInUseCase,
+      signUpUseCase: signUpUseCase,
+      signOutUseCase: signOutUseCase,
+    ),
+    child: MaterialApp(
+      home: const LoginPage(),
+    ),
+  );
+}
 }
